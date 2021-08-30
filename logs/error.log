@@ -1,0 +1,24 @@
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"name":"JsonWebTokenError","message":"jwt must be provided","level":"error"}
+{"name":"JsonWebTokenError","message":"jwt must be provided","level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"name":"TokenExpiredError","message":"jwt expired","expiredAt":"2021-08-29T12:52:18.000Z","level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error"}
+{"level":"error","message":"!!! err is not defined","stack":"ReferenceError: err is not defined\n    at sendEmail (file:///Users/tiborzavadovics/Website%20Projects/Fitness_Fanatics/backend/src/utils/sendEmail.js:26:18)\n    at processTicksAndRejections (node:internal/process/task_queues:94:5)\n    at async Object.register (file:///Users/tiborzavadovics/Website%20Projects/Fitness_Fanatics/backend/src/services/userService.js:69:7)\n    at async post (file:///Users/tiborzavadovics/Website%20Projects/Fitness_Fanatics/backend/src/controllers/userController.js:19:20)"}
+{"code":"EENVELOPE","command":"API","level":"error"}
+{"code":"EENVELOPE","command":"API","level":"error"}
+{"code":"EENVELOPE","command":"API","level":"error"}
+{"code":"EENVELOPE","command":"API","level":"error"}
+{"code":"EENVELOPE","command":"API","level":"error"}
+{"level":"error"}

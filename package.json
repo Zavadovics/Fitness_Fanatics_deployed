@@ -4,9 +4,10 @@
     "description": "",
     "main": "index.js",
     "scripts": {
+        "start": "node index.js",
+        "heroku-postbuild": "cd client && yarn install --only=dev && yarn install && yarn run build",
         "test": "jest",
-        "test:watch": "jest --watch",
-        "start": "node src/index.js"
+        "test:watch": "jest --watch"
     },
     "keywords": [],
     "type": "module",
