@@ -1,0 +1,9 @@
+@use '../../../styles/variables';
+.edit-activity-cont {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 4em 0;
+}

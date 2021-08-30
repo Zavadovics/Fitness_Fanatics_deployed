@@ -1,0 +1,71 @@
+@use '../../../styles/variables';
+@import url('https://cdn.syncfusion.com/ej2/material.css');
+.activity-form-cont {
+    min-height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.activity-form-cont form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+    background: variables.$color-test;
+    padding: 2em 0;
+    margin: 2em 0;
+    box-shadow: 0px 3px 8px #000;
+    border-radius: 10px;
+    transition: all 300ms ease-in-out;
+}
+
+.activity-form-cont form:hover {
+    box-shadow: 0px 10px 40px #000;
+}
+
+.activityStartDateAndTime {
+    display: flex;
+    flex-direction: column;
+    padding-left: 0.6em;
+}
+
+.activityStartDateAndTime label {
+    padding-bottom: 0.5em;
+}
+
+#activityStartDateAndTime {
+    width: 103%;
+    margin-bottom: 0.5em;
+}
+
+.input {
+    width: 80%;
+}
+
+.activity-btn {
+    background: variables.$color-lightorange;
+    padding: 0.8em 1.6em;
+    border: none;
+    margin: 1.5em;
+    border-radius: 5px;
+    border: 2px solid variables.$color-lightorange;
+}
+
+.activity-btn:hover {
+    background: variables.$color-darkorange;
+    border: 2px solid variables.$color-blue;
+}
+
+@media screen and (max-width: 1024px) {
+    .activity-form-cont form {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .input {
+        width: 75%;
+    }
+}

@@ -1,0 +1,127 @@
+@use '../../../styles/variables';
+.view-profile-cont {
+    min-height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4em 0;
+}
+
+.profile-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 60%;
+    background: variables.$color-test;
+    padding: 2em 0;
+    margin: 4em 0 2em;
+    box-shadow: 0px 3px 8px #000;
+    border-radius: 10px;
+    transition: all 300ms ease-in-out;
+}
+
+.profile-card:hover {
+    box-shadow: 0px 10px 40px #000;
+}
+
+.user-photo-cont {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin: 2em 0;
+}
+
+.user-photo-cont img {
+    width: 100%;
+    height: auto;
+}
+
+.text-cont {
+    display: flex;
+    flex-direction: column;
+    border-top: 4px solid variables.$color-lightorange;
+    border-bottom: 4px solid variables.$color-lightorange;
+    padding-top: 1em;
+}
+
+.text-row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.text-row p {
+    width: 200px;
+}
+
+.text-row p:first-of-type {
+    font-weight: bold;
+    color: variables.$color-darkgrey;
+}
+
+.text-row p:last-of-type {
+    color: variables.$color-blue;
+}
+
+.prof-mod-btn {
+    background: variables.$color-lightorange;
+    padding: 0.8em 1.6em;
+    border: none;
+    margin: 2em;
+    border-radius: 5px;
+    border: 2px solid variables.$color-lightorange;
+}
+
+.prof-mod-btn:hover {
+    background: variables.$color-darkorange;
+    border: 2px solid variables.$color-blue;
+}
+
+@media screen and (max-width: 1200px) {
+    .text-cont {
+        flex-direction: column;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .profile-card {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .view-profile-cont {
+        font-size: 15px;
+    }
+    .text-row {
+        flex-direction: column;
+        text-align: center;
+    }
+    .text-row p {
+        width: 250px;
+    }
+}
+
+@media screen and (max-width: 620px) {
+    .text-row p {
+        width: 200px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .profile-card {
+        padding: 1em;
+    }
+    .text-row p {
+        width: 150px;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    .profile-card {
+        padding: 0;
+        font-size: 12px;
+    }
+}

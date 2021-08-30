@@ -1,0 +1,23 @@
+@use '../../../styles/variables';
+label {
+    color: variables.$color-blue;
+}
+
+.center {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.password-eye-cont {
+    position: relative;
+}
+
+.password-icon {
+    cursor: pointer;
+    position: absolute;
+    right: 28px;
+    top: 59px;
+}

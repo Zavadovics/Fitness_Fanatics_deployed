@@ -1,0 +1,127 @@
+@use '../../../styles/variables';
+.edit-photo-cont {
+    text-align: center;
+    min-height: 70vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4em 0;
+}
+
+.edit-photo-cont .inner {
+    display: flex;
+    width: 60%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: variables.$color-test;
+    padding: 2em;
+    margin: 2em 0;
+    box-shadow: 0px 3px 8px #000;
+    border-radius: 10px;
+    transition: all 300ms ease-in-out;
+}
+
+.edit-photo-cont .inner:hover {
+    box-shadow: 0px 10px 40px #000;
+}
+
+.photo-btn {
+    background: variables.$color-lightorange;
+    padding: 0.8em 1.6em;
+    border: none;
+    margin: 1.5em;
+    border-radius: 5px;
+    border: 2px solid variables.$color-lightorange;
+}
+
+.photo-btn:hover {
+    background: variables.$color-darkorange;
+    border: 2px solid variables.$color-blue;
+}
+
+.del-btn {
+    background: variables.$color-bootstrap-red;
+    padding: 0.6em 0.8em;
+    font-weight: 800;
+    border-radius: 5px;
+    border: 2px solid variables.$color-bootstrap-red;
+}
+
+.del-btn:hover {
+    background: variables.$color-bootstrap-red-faded;
+    border: 2px solid variables.$color-blue;
+}
+
+.user-photo-cont {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin: 2em 0;
+}
+
+.edit-photo-cont .inner p span:first-of-type,
+.edit-photo-cont .inner p span:last-of-type {
+    font-weight: bold;
+    color: variables.$color-darkgrey;
+}
+
+.edit-photo-cont .inner p span:nth-of-type(2) {
+    color: variables.$color-blue;
+}
+
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+.input-label {
+    padding: 0.8em;
+    border: 2px solid variables.$color-white;
+    cursor: pointer;
+    background: variables.$color-white;
+    border-radius: 5px;
+}
+
+.input-label:hover {
+    border: 2px solid variables.$color-blue;
+}
+
+.inputfile:focus+label {
+    outline: 2px solid variables.$color-darkorange;
+    outline: -webkit-focus-ring-color auto 5px;
+}
+
+.inputfile+label * {
+    pointer-events: none;
+}
+
+@media screen and (max-width: 1024px) {
+    .edit-photo-cont .inner {
+        width: 90%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .alert-cont {
+        width: 70%;
+    }
+    .user-photo-cont {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .edit-photo-cont .inner {
+        width: 90%;
+    }
+}

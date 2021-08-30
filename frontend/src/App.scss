@@ -1,0 +1,179 @@
+@use './styles/variables';
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap');
+* {
+    box-sizing: border-box;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.app-cont {
+    display: flex;
+    flex-direction: column;
+}
+
+.content-cont {
+    display: flex;
+}
+
+.page-cont {
+    width: 100%;
+}
+
+.inner-h2 {
+    font-weight: 700;
+    text-align: center;
+    color: variables.$color-blue;
+    background: variables.$color-test;
+    width: 30%;
+    padding: 0.6em;
+    border-radius: 10px;
+    border: 2px solid variables.$color-lightorange;
+}
+
+.outer-h1 {
+    font-weight: 700;
+    font-size: 35px;
+    text-align: center;
+    color: variables.$color-blue;
+}
+
+.alert-cont {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 50%;
+    margin-top: 2em;
+}
+
+.alert {
+    box-shadow: 0px 3px 8px #000;
+    border-radius: 10px;
+}
+
+.captcha {
+    padding: 1.5em 0 1em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.text-link {
+    color: variables.$color-blue;
+    padding-bottom: 0.5em;
+    position: relative;
+    text-decoration: none;
+}
+
+.text-link:after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: '';
+    display: block;
+    height: 4px;
+    left: 50%;
+    position: absolute;
+    background: variables.$color-lightorange;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+}
+
+.text-link:hover:after {
+    width: 100%;
+    left: 0;
+}
+
+.no-activities {
+    font-size: 25px;
+    text-align: center;
+    align-self: center;
+    color: variables.$color-blue;
+    background: variables.$color-test;
+    width: 40%;
+    padding: 0.6em;
+    border-radius: 10px;
+    border: 2px solid variables.$color-lightorange;
+}
+
+@media screen and (max-width: 1200px) {
+    .inner-h2,
+    .outer-h1 {
+        width: 40%;
+    }
+    .alert-cont {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 968px) {
+    .inner-h2,
+    .outer-h1 {
+        width: 70%;
+        font-size: 30px;
+    }
+    .alert-cont {
+        width: 70%;
+    }
+    .no-activities {
+        font-size: 20px;
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .inner-h2,
+    .outer-h1 {
+        width: 70%;
+        font-size: 25px;
+    }
+    .captcha {
+        padding-left: 30% !important;
+        transform: scale(0.8);
+        transform-origin: 0 0;
+        -webkit-transform: scale(0.8);
+        -webkit-transform-origin: 0 0;
+        padding: 1.5em 0 0.2em;
+    }
+    .text-link {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .captcha {
+        padding-left: 50% !important;
+        transform: scale(0.7);
+        transform-origin: 0 0;
+        -webkit-transform: scale(0.7);
+        -webkit-transform-origin: 0 0;
+        padding: 1.5em 0 0 0;
+    }
+    .text-link {
+        font-size: 12px;
+    }
+    .inner-h2,
+    .outer-h1 {
+        width: 80%;
+    }
+    .no-activities {
+        font-size: 20px;
+        width: 80%;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .captcha {
+        padding-left: 75% !important;
+        transform: scale(0.6);
+        transform-origin: 0 0;
+        -webkit-transform: scale(0.6);
+        -webkit-transform-origin: 0 0;
+    }
+    .text-link {
+        font-size: 10px;
+    }
+    .inner-h2,
+    .outer-h1 {
+        width: 90%;
+    }
+}
