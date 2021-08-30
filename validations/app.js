@@ -1,8 +1,8 @@
 import express from 'express';
 import morgan from 'morgan';
-import api from './routes/api.routes.js';
-import logger from './logger.js';
-import errorHandler from './middlewares/error-handler.js';
+import api from '../routes/api.routes.js';
+import logger from '../logger.js';
+import errorHandler from '../middlewares/error-handler.js';
 
 const app = express();
 
