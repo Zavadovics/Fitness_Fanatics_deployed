@@ -10,6 +10,4 @@ app.use(morgan('combined', { stream: logger.stream }));
 app.use('/api', api);
 app.use(() => errorHandler);
 
-app.use(express.static(path.join(__dirname, 'client', 'build')));
-
 export default app;
