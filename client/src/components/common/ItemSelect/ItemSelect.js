@@ -21,7 +21,7 @@ const ItemSelect = ({
         ref={reference}
         id={name}
       >
-        <option value={''}>Válassz!</option>
+        <option value={''}>Choose one!</option>
         {valueList.map(value => (
           <option key={value} value={value}>
             {value}

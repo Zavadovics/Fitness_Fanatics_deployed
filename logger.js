@@ -5,7 +5,7 @@ const options = {
   file: {
     level: 'info',
     handleExceptions: true,
-    maxsize: 5242880, // 5MB
+    maxsize: 5242880, 
     maxFiles: 5,
     colorize: false,
     json: true,
@@ -37,12 +37,10 @@ const logger = createLogger({
   ],
 });
 
-/* istanbul ignore next */
 logger.stream = {
   write: message => logger.info(message),
 };
 
-/* istanbul ignore next */
 if (process.env.NODE_ENV !== 'production') {
   logger.add(
     Object.assign(new transports.Console(options.console), {

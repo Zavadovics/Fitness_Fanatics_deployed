@@ -11,7 +11,7 @@ const Profile = ({ loggedInUser, profile, userPhoto }) => {
         className='view-profile-cont'
         style={{ backgroundImage: `url(${bg})` }}
       >
-        <h2 className='inner-h2'>Saját profil</h2>
+        <h2 className='inner-h2'>My profile</h2>
         <div className='profile-card'>
           <div className='user-photo-cont'>
             {userPhoto !== '' ? (
@@ -22,35 +22,35 @@ const Profile = ({ loggedInUser, profile, userPhoto }) => {
           </div>
           <div className='text-cont'>
             <div className='text-row'>
-              <p>Felhasználónév:</p>
+              <p>Username:</p>
               <p>{profile.userName}</p>
             </div>
             <div className='text-row'>
-              <p>Vezetéknév:</p>
-              <p>{profile.lastName}</p>
-            </div>
-            <div className='text-row'>
-              <p>Keresztnév:</p>
+              <p>First name:</p>
               <p>{profile.firstName}</p>
             </div>
             <div className='text-row'>
-              <p>Email cím:</p>
+              <p>Last name:</p>
+              <p>{profile.lastName}</p>
+            </div>
+            <div className='text-row'>
+              <p>E-mail address:</p>
               <p>{profile.email}</p>
             </div>
             <div className='text-row'>
-              <p>Nem:</p>
+              <p>Gender:</p>
               <p>{profile.gender}</p>
             </div>
             <div className='text-row'>
-              <p>Tartózkodási hely:</p>
+              <p>City of residence:</p>
               <p>{profile.cityOfResidence}</p>
             </div>
             <div className='text-row'>
-              <p>Testsúly:</p>
-              {profile.weight === 0 ? <p></p> : <p>{profile.weight}</p>}
+              <p>Weight:</p>
+              {profile.weight === 0 ? <p></p> : <p>{profile.weight} kg</p>}
             </div>
             <div className='text-row'>
-              <p>Születési dátum:</p>
+              <p>Date of birth:</p>
               {profile.birthDate ===
                 'Thu Jan 01 1970 01:00:00 GMT+0100 (Central European Standard Time)' ||
               profile.birthDate === '' ? (
@@ -60,13 +60,13 @@ const Profile = ({ loggedInUser, profile, userPhoto }) => {
               )}
             </div>
             <div className='text-row'>
-              <p>Motivációs szöveg:</p>
+              <p>Motivational quote:</p>
               <p>{profile.motivation}</p>
             </div>
           </div>
           <NavLink to={`/profile/edit/${loggedInUser.id}`}>
             <button type='button' className='prof-mod-btn'>
-              MÓDOSÍTÁS
+              EDIT
             </button>
           </NavLink>
         </div>

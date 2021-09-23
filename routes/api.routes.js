@@ -8,15 +8,10 @@ import { cityController } from '../controllers/cityController.js';
 import { activityController } from '../controllers/activityController.js';
 import { photoController } from '../controllers/photoController.js';
 import { planController } from '../controllers/planController.js';
-import path from 'path'; /* deploy */
 
 const router = express.Router();
 router.use(cors());
 router.use(express.json());
-
-router.use(
-  express.static(path.join(__dirname, 'client', 'build'))
-); /* deploy */
 
 router.post('/user', userController.post);
 router.post('/user/activation', userController.activateUser);

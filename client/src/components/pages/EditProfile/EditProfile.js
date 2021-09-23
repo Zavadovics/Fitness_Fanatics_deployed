@@ -8,7 +8,7 @@ import './editProfile.scss';
 const EditProfile = ({ profile, setProfile, loggedInUser }) => {
   const { REACT_APP_SERVER_URL } = process.env;
   const [cities, setCities] = useState([]);
-  const genderList = ['férfi', 'nő', 'nem szeretném megadni'];
+  const genderList = ['male', 'female', `I'd rather not say`];
   const [formData, setFormData] = useState(profile);
   const [alert, setAlert] = useState(null);
   const [formWasValidated, setFormWasValidated] = useState(false);
@@ -49,10 +49,10 @@ const EditProfile = ({ profile, setProfile, loggedInUser }) => {
   };
 
   const formErrorTypes = Object.freeze({
-    required: `A mező kitöltése kötelező`,
-    validEmail: `Nem megfelelő email formátum`,
-    positive: `A megadott érték nagyobb kell hogy legyen mint 0.`,
-    futureDate: `Kérlek egy múltbeli dátumot addj meg!`,
+    required: `Please fill me in`,
+    validEmail: `E-mail is not the right format`,
+    positive: `Value must be greater than 0`,
+    futureDate: `I need a future date here`,
   });
 
   const [formErrors, setFormErrors] = useState({
@@ -101,17 +101,16 @@ const EditProfile = ({ profile, setProfile, loggedInUser }) => {
   };
 
   const validateField = fieldName => {
-    console.log('formData', formData);
     const value = formData[fieldName];
     let isValid = true;
     setFormErrors(prev => ({
       ...prev,
       [fieldName]: '',
     }));
-    if (
-      (formData.birthDate === undefined || formData.birthDate === '') &&
-      (formData.weight === '' || formData.weight === undefined)
-    ) {
+    if (formData.birthDate === undefined || formData.birthDate === '') {
+      return true;
+    }
+    if (formData.weight === '' || formData.weight === undefined) {
       return true;
     }
 
@@ -222,7 +221,7 @@ const EditProfile = ({ profile, setProfile, loggedInUser }) => {
         className='profile-edit-cont'
         style={{ backgroundImage: `url(${bg})` }}
       >
-        <h2 className='inner-h2'>Profil módosítása</h2>
+        <h2 className='inner-h2'>Edit profile</h2>
         <div className='alert-cont'>
           {alert && (
             <p className={`alert alert-${alert.alertType}`}>{alert.message}</p>
@@ -237,25 +236,15 @@ const EditProfile = ({ profile, setProfile, loggedInUser }) => {
             <InputField
               name='userName'
               type='text'
-              labelText='Felhasználónév'
+              labelText='Username'
               onChange={handleInputChange}
               value={formData.userName || ''}
               onBlur={handleInputBlur}
             />
             <InputField
-              name='lastName'
-              type='text'
-              labelText='Vezetéknév *'
-              onChange={handleInputChange}
-              value={formData.lastName}
-              onBlur={handleInputBlur}
-              reference={references.lastName}
-              error={formErrors.lastName}
-            />
-            <InputField
               name='firstName'
               type='text'
-              labelText='Keresztnév *'
+              labelText='First name *'
               onChange={handleInputChange}
               value={formData.firstName}
               onBlur={handleInputBlur}
@@ -263,9 +252,19 @@ const EditProfile = ({ profile, setProfile, loggedInUser }) => {
               error={formErrors.firstName}
             />
             <InputField
+              name='lastName'
+              type='text'
+              labelText='Last name *'
+              onChange={handleInputChange}
+              value={formData.lastName}
+              onBlur={handleInputBlur}
+              reference={references.lastName}
+              error={formErrors.lastName}
+            />
+            <InputField
               name='email'
               type='email'
-              labelText='Email *'
+              labelText='E-mail address *'
               onChange={handleInputChange}
               value={formData.email}
               onBlur={handleInputBlur}
@@ -273,17 +272,17 @@ const EditProfile = ({ profile, setProfile, loggedInUser }) => {
               error={formErrors.email}
             />
             <ItemSelect
-              labelText='Nem'
               name='gender'
               id='gender'
+              labelText='Gender'
               formValue={formData.gender || ''}
               valueList={genderList}
               onChange={handleInputChange}
             />
             <ItemSelect
-              labelText='Tartózkodási hely'
               name='cityOfResidence'
               id='cityOfResidence'
+              labelText='City of residence'
               formValue={formData.cityOfResidence || ''}
               valueList={cities}
               onChange={handleInputChange}
@@ -291,7 +290,7 @@ const EditProfile = ({ profile, setProfile, loggedInUser }) => {
             <InputField
               name='weight'
               type='number'
-              labelText='Testsúly'
+              labelText='Weight'
               onChange={handleInputChange}
               value={formData.weight || ''}
               onBlur={handleInputBlur}
@@ -301,7 +300,7 @@ const EditProfile = ({ profile, setProfile, loggedInUser }) => {
             <InputField
               name='birthDate'
               type='date'
-              labelText='Születési dátum'
+              labelText='Date of birth'
               onChange={handleInputChange}
               value={formData.birthDate || ''}
               onBlur={handleInputBlur}
@@ -311,14 +310,14 @@ const EditProfile = ({ profile, setProfile, loggedInUser }) => {
             <InputField
               name='motivation'
               type='motivation'
-              labelText='Motivációs szöveg'
+              labelText='Motivational quote'
               onChange={handleInputChange}
               value={formData.motivation || ''}
               onBlur={handleInputBlur}
             />
           </div>
           <button type='submit' className='profile-edit-btn'>
-            MENTÉS
+            SAVE
           </button>
         </form>
       </div>

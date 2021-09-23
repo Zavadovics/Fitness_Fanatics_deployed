@@ -8,7 +8,7 @@ import {
 } from '../../../utils/helper';
 import './card.scss';
 import Moment from 'react-moment';
-import 'moment/locale/hu';
+// import 'moment/locale/hu';
 
 const Card = ({
   loggedInUser,
@@ -67,7 +67,7 @@ const Card = ({
       <div className='card'>
         <div className='card-body'>
           <h5 className='card-title'>
-            <Moment format='LL'>{activity.activityDate}</Moment>-{' '}
+            <Moment format='LL'>{activity.activityDate}</Moment> -{' '}
             <span>{activity.activityTime}</span>
           </h5>
           <h5 className='card-title'>
@@ -81,7 +81,7 @@ const Card = ({
             ) : (
               <span className='card-subtitle mb-2 text-muted'>
                 {' - '}
-                {calorieCounter(activity.duration, profile.weight)} kalória
+                {calorieCounter(activity.duration, profile.weight)} calories
               </span>
             )}
           </h6>
@@ -90,7 +90,7 @@ const Card = ({
         <div className='card-button-container'>
           <NavLink to={`/activities/edit/${activity._id}`}>
             <button type='button' className='card-mod-btn'>
-              MÓDOSÍTÁS
+              EDIT
             </button>
           </NavLink>
           <button
@@ -101,7 +101,7 @@ const Card = ({
             data-bs-target='#myModal'
             data-bs-toggle='modal'
           >
-            TÖRLÉS
+            DELETE
           </button>
         </div>
       </div>

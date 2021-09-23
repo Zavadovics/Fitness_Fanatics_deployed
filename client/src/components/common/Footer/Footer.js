@@ -8,7 +8,7 @@ const Footer = () => {
       <footer className='main-footer'>
         <p>Copyright &copy; 2021 </p>
         <img className='footer-logo' src={logo} alt='logo' />
-        <p>Minden jog fenntartva.</p>
+        <p>All rights reserved</p>
       </footer>
     </>
   );

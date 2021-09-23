@@ -20,7 +20,7 @@ const Navbar = ({ loggedInUser, setLoggedInUser, userPhoto }) => {
           <div className='logged-in-cont'>
             <div className='left'>
               <p>
-                Üdv <span>{loggedInUser.firstName}</span> !
+                Welcome <span>{loggedInUser.firstName}</span> !
               </p>
               <div className='nav-user-photo-cont'>
                 {userPhoto !== '' ? (
@@ -31,7 +31,7 @@ const Navbar = ({ loggedInUser, setLoggedInUser, userPhoto }) => {
               </div>
             </div>
             <button type='button' className='navbar-btn' onClick={handleLogout}>
-              KIJELENTKEZÉS
+              LOGOUT
             </button>
           </div>
         ) : (
@@ -54,19 +54,19 @@ const Navbar = ({ loggedInUser, setLoggedInUser, userPhoto }) => {
               <ul className='navbar-nav nav-item-flex mb-lg-0'>
                 <div className='ms-lg-2'>
                   <NavLink to='/' exact className='nav-link'>
-                    <li>Főoldal</li>
+                    <li>Home</li>
                   </NavLink>
                 </div>
                 <div className='nav-item-flex me-lg-2'>
                   <NavLink to='/register' className='nav-link'>
-                    <li className='w-100 reg-link'>Regisztráció</li>
+                    <li className='w-100 reg-link'>Registration</li>
                   </NavLink>
                   <div
                     className='vertical-line'
                     style={{ height: '45px' }}
                   ></div>
                   <NavLink exact to='/login' className='nav-link'>
-                    <li className='w-100'>Bejelentkezés</li>
+                    <li className='w-100'>Login</li>
                   </NavLink>
                 </div>
               </ul>

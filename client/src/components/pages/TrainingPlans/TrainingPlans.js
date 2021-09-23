@@ -15,8 +15,8 @@ const TrainingPlans = ({ loggedInUser }) => {
   const [plans, setPlans] = useState([]);
   const [newPlans, setNewPlans] = useState([]);
   const messageTypes = Object.freeze({
-    missingFile: `Nincs hozzáadva feltöltendő fájl`,
-    addedFile: `Feltöltendő fájl hozzáadva`,
+    missingFile: `No file added`,
+    addedFile: `File ready to be uploaded`,
   });
 
   const [data, setData] = useState(null);
@@ -31,7 +31,7 @@ const TrainingPlans = ({ loggedInUser }) => {
   };
 
   const formErrorTypes = Object.freeze({
-    required: `A mező kitöltése kötelező`,
+    required: `Please fill me in`,
   });
 
   const [formErrors, setFormErrors] = useState({
@@ -148,7 +148,7 @@ const TrainingPlans = ({ loggedInUser }) => {
       className='training-plan-cont'
       style={{ backgroundImage: `url(${bg})` }}
     >
-      <h2 className='inner-h2'>Edzéstervek</h2>
+      <h2 className='inner-h2'>Training plans</h2>
       <div className='alert-cont'>
         {alert && (
           <p className={`alert alert-${alert.alertType}`}>{alert.message}</p>
@@ -160,8 +160,8 @@ const TrainingPlans = ({ loggedInUser }) => {
         className={`needs-validation ${formWasValidated && 'was-validated'}`}
       >
         <p>
-          Van egy edzésterved ami hasznos lehet másoknak? Itt feltöltheted az
-          adatbázisba.
+          Do you have a training plan that you would like to share with others?
+          You can add it to the database here.
         </p>
         <input
           className='form-control pdf-inputfile'
@@ -172,13 +172,13 @@ const TrainingPlans = ({ loggedInUser }) => {
           onChange={handleFileChange}
         />
         <label className='pdf-input-label' htmlFor='file'>
-          Válassz egy fájlt (Kattints ide)
+          Pick a file! (Click here)
         </label>
         <InputField
           centerClass='center'
           name='title'
           type='text'
-          labelText='Edzésterv elnevezése *'
+          labelText='Name of training plan *'
           value={formData.title}
           onChange={e => {
             handleInputChange(e, formData, setFormData);
@@ -196,7 +196,7 @@ const TrainingPlans = ({ loggedInUser }) => {
           reference={references.title}
           error={formErrors.title}
         />
-        <button className='photo-btn'>Küldés</button>
+        <button className='photo-btn'>UPLOAD</button>
       </form>
       <>
         {plans.map(plan => (
@@ -211,14 +211,14 @@ const TrainingPlans = ({ loggedInUser }) => {
                 <p>
                   {plan.originalName} -{' '}
                   <a target='_blank' rel='noreferrer' href={plan.avatar}>
-                    megnyitás
+                    open in new window
                   </a>
                 </p>
               </object>
               <p className='object-text'>
                 {plan.originalName} -{' '}
                 <a target='_blank' rel='noreferrer' href={plan.avatar}>
-                  megnyitás
+                  open in new window
                 </a>
               </p>
             </div>

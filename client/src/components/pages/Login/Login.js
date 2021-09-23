@@ -37,9 +37,9 @@ const Login = ({ loggedInUser, setLoggedInUser }) => {
   };
 
   const formErrorTypes = Object.freeze({
-    required: `A mező kitöltése kötelező`,
-    passwordLength: `A jelszó legalább 8 karakter hosszú kell legyen`,
-    validEmail: `Nem megfelelő email formátum`,
+    required: `Please fill me in`,
+    passwordLength: `The passwords needs to be at least 8 characters long`,
+    validEmail: `E-mail is not the right format`,
   });
 
   const [formErrors, setFormErrors] = useState({
@@ -48,12 +48,8 @@ const Login = ({ loggedInUser, setLoggedInUser }) => {
   });
 
   const messageTypes = Object.freeze({
-    failCaptcha: `Kérlek bizonyítsd be hogy nem vagy robot 🤖`,
+    failCaptcha: `Please prove me that you're not a robot 🤖`,
   });
-
-  // const togglePasswordVisibility = () => {
-  //   setPasswordShown(passwordShown ? false : true);
-  // };
 
   const validators = {
     email: {
@@ -129,7 +125,7 @@ const Login = ({ loggedInUser, setLoggedInUser }) => {
     <>
       <Navbar setLoggedInUser={setLoggedInUser} loggedInUser={loggedInUser} />
       <div className='login-cont'>
-        <h1 className='outer-h1'>Bejelentkezés</h1>
+        <h1 className='outer-h1'>Login</h1>
         <div className='alert-cont'>
           {alert && (
             <p className={`alert alert-${alert.alertType}`}>{alert.message}</p>
@@ -146,7 +142,7 @@ const Login = ({ loggedInUser, setLoggedInUser }) => {
               name='email'
               type='email'
               value={formData.email}
-              labelText='Email cím *'
+              labelText='E-mail address *'
               onChange={e => {
                 handleInputChange(e, formData, setFormData);
               }}
@@ -170,7 +166,7 @@ const Login = ({ loggedInUser, setLoggedInUser }) => {
               setPasswordShown={setPasswordShown}
               type={passwordShown ? 'text' : 'password'}
               value={formData.password}
-              labelText='Jelszó *'
+              labelText='Password *'
               onChange={e => {
                 handleInputChange(e, formData, setFormData);
               }}
@@ -189,6 +185,7 @@ const Login = ({ loggedInUser, setLoggedInUser }) => {
               required
             />
             <ReCAPTCHA
+              hl='en'
               className='captcha'
               sitekey={REACT_APP_GOOGLE_RECAPTCHA_KEY}
               onChange={() => {
@@ -198,16 +195,16 @@ const Login = ({ loggedInUser, setLoggedInUser }) => {
           </div>
           <p>
             <Link to='/register' className='text-link'>
-              Még nem regisztráltál? Itt megteheted.
+              Not registered yet? You can do it here
             </Link>
           </p>
           <p>
             <Link to='/password' className='text-link'>
-              Elfelejtetted a jelszavad? Itt kérhetsz újat.
+              Forgotten your password? Get a new one here
             </Link>
           </p>
           <button type='submit' className='login-btn'>
-            BEJELENTKEZÉS
+            LOGIN
           </button>
         </form>
       </div>

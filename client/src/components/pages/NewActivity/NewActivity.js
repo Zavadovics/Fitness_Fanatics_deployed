@@ -8,7 +8,7 @@ const NewActivity = ({ loggedInUser }) => {
       className='new-activity-cont'
       style={{ backgroundImage: `url(${bg})` }}
     >
-      <h2 className='inner-h2'>Új tevékenység hozzáadása</h2>
+      <h2 className='inner-h2'>New activity</h2>
       <ActivityForm type='new' loggedInUser={loggedInUser} />
     </main>
   );

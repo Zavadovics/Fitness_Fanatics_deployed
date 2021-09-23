@@ -50,7 +50,7 @@ describe('DELETE /photo/:id', () => {
         .set('Authorization', `Bearer ${authToken}`)
         .then(response => {
           expect(response.statusCode).toBe(200);
-          expect(response.body.message).toBe('Fotó sikeresen törölve');
+          expect(response.body.message).toBe('Photo has been deleted');
         });
     });
   });

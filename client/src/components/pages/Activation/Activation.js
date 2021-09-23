@@ -45,7 +45,7 @@ const Activation = () => {
     <>
       <Navbar />
       <div className='activation-cont'>
-        <h1 className='outer-h1'>Új fiók aktiválása</h1>
+        <h1 className='outer-h1'>Activate new account</h1>
         <div className='alert-cont'>
           {alert && (
             <p className={`alert alert-${alert.alertType}`}>{alert.message}</p>

@@ -15,16 +15,16 @@ const Home = () => {
         <div className='home-cont'>
           <div className='title-cont'>
             <h1>Fitness Fanatics</h1>
-            <h4>A belépéshez regisztráció/bejelentkezés szükséges</h4>
+            <h4>Please register / login to use the app</h4>
             <div className='buttons'>
               <NavLink to='/register'>
                 <button type='button' className='home-btn'>
-                  REGISZTRÁCIÓ
+                  REGISTRATION
                 </button>
               </NavLink>
               <NavLink to='/login'>
                 <button type='button' className='home-btn'>
-                  BEJELENTKEZÉS
+                  LOGIN
                 </button>
               </NavLink>
             </div>

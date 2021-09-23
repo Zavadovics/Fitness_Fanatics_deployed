@@ -26,7 +26,7 @@ export const userService = {
     if (emailExist)
       return {
         status: 409,
-        message: 'Az általad megadott email cím már regisztrálva van',
+        message: 'This e-mail address has already been registered',
       };
 
     const salt = await bcrypt.genSalt(10);
@@ -43,15 +43,15 @@ export const userService = {
 
     const link = `${process.env.FRONTEND_URL}/user/activation/${activation_token}`;
     const emailData = {
-      subject: 'Fitness Fanatics - fiók aktiválás',
+      subject: 'Fitness Fanatics - account activation',
       html: `
       <div style="max-width: 700px; margin:auto; border: 10px solid #1b468a">
         <div style="max-width: 700px; margin:auto; border: 4px solid #ffa561; padding: 50px 20px; font-size: 110%; text-align: center">
-        <h2 style="color: #1b468a;">Üdvözöl a FITNESS FANATICS!</h2>
-      <p style="padding: 40px 0 20px">Gratulálunk! Már csak egy lépésre vagy attól hogy használhasd a FITNESS FANATICS alkalmazást. Csak kattints az alábbi gombra az fiókod aktiválásához.
+        <h2 style="color: #1b468a;">Welcome to FITNESS FANATICS!</h2>
+      <p style="padding: 40px 0 20px">Congrats! You're only one step away from using our app. Click the button below to activate your account!
       </p>
-      <a href=${link} style="background: #ffa561; color: #1b468a; text-decoration: none; padding: 10px 20px; letter-spacing: 2px; border-radius: 5px; font-size: 120%;">Aktiválás</a>
-      <p style="padding: 20px 0">Ha valamiért a gomb nem működne, az alábbi linken keresztül is véglegesítheted regisztrációdat:</p>
+      <a href=${link} style="background: #ffa561; color: #1b468a; text-decoration: none; padding: 10px 20px; letter-spacing: 2px; border-radius: 5px; font-size: 120%;">Activate account</a>
+      <p style="padding: 20px 0">In case the button doesn't work, you can also finalize your registration by clicking the link below.</p>
   
       <div>${link}</div>
       </div>
@@ -64,13 +64,13 @@ export const userService = {
       return {
         status: 200,
         message:
-          'A fiókod aktiválásához kérlek nyisd meg az e-mailt amit küldtünk',
+          'Please open the e-mail we have just sent you to activate your account',
       };
     } catch (err) {
       logger.error(err);
       return {
         status: 500,
-        message: 'Adatbázis probléma',
+        message: 'Database error',
       };
     }
   },
@@ -79,12 +79,12 @@ export const userService = {
     try {
       const { token } = userData;
       const user = jwt.verify(token, process.env.ACTIVATION_TOKEN_SECRET);
-      console.log('user', user);
+
       const emailExist = await User.findOne({ email: user.email });
       if (emailExist)
         return {
           status: 409,
-          message: 'Az általad megadott email cím már regisztrálva van',
+          message: 'This e-mail address has already been registered',
         };
 
       const newUser = new User({
@@ -97,7 +97,7 @@ export const userService = {
       await newUser.save();
       return {
         status: 201,
-        message: `Sikeres fiók aktiválás. Máris átirányítunk a bejelentkezés oldalra`,
+        message: `Successful activation. You are being redirected to our login page`,
         user: user,
       };
     } catch (err) {
@@ -105,13 +105,25 @@ export const userService = {
       return {
         status: 401,
         message:
-          'Sajnos a fiókod aktiválására adott idő (15 perc) lejárt. Új regisztráció szükséges',
+          'The time to activate your account (15 mins) has expired. New registration required',
       };
     }
   },
 
   async updateUser(id, reqData) {
-    const { _id, __v, updatedAt, createdAt, ...others } = reqData;
+    const {
+      _id,
+      __v,
+      updatedAt,
+      createdAt,
+      userName,
+      gender,
+      cityOfResidence,
+      weight,
+      birthDate,
+      motivation,
+      ...others
+    } = reqData;
     const { error } = userValidation(others);
 
     if (error) {
@@ -131,14 +143,14 @@ export const userService = {
       });
       return {
         status: 200,
-        message: `Sikeres mentés. Az adatokat hozzádtuk az adatbázishoz`,
+        message: `Your information has been added to our database`,
         updatedUser: updatedUser,
       };
     } catch (err) {
       logger.error(err);
       return {
         status: 500,
-        message: 'Adatbázis probléma',
+        message: 'Database error',
       };
     }
   },
@@ -150,7 +162,7 @@ export const userService = {
       if (!user)
         return {
           status: 400,
-          message: 'A megadott e-mail címmel még nem regisztráltak',
+          message: 'This e-mail address has not yet been registered',
         };
 
       const authToken = jwt.sign(
@@ -165,17 +177,17 @@ export const userService = {
 
       const link = `${process.env.FRONTEND_URL}/password-reset/${user._id}/${authToken}`;
       const emailData = {
-        subject: 'Fitness Fanatics - jelszócsere',
+        subject: 'Fitness Fanatics - update password',
         html: `
         <div style="max-width: 700px; margin:auto; border: 10px solid #1b468a">
         <div style="max-width: 700px; margin:auto; border: 4px solid #ffa561; padding: 50px 20px; font-size: 110%; text-align: center">
-        <h2 style="color: #1b468a;">Üdvözöl a FITNESS FANATICS!</h2>
-      <p style="padding: 40px 0 20px;">Csak kattints az alábbi gombra és máris lecserélheted a jelszavad.
+        <h2 style="color: #1b468a;">Welcome to FITNESS FANATICS!</h2>
+      <p style="padding: 40px 0 20px;">Just click the button below to change your password!
       </p>
       
-      <a href=${link} style="background: #ffa561; color: #1b468a; text-decoration: none; padding: 10px 20px; display: block; margin: 0 auto; width: 100px; letter-spacing: 2px; border-radius: 5px; font-size: 120%">Új jelszó</a>
+      <a href=${link} style="background: #ffa561; color: #1b468a; text-decoration: none; padding: 10px 20px; display: block; margin: 0 auto; width: 100px; letter-spacing: 2px; border-radius: 5px; font-size: 120%">New password</a>
   
-      <p style="padding: 20px 0">Ha valamiért a gomb nem működne, a linkre kattintva is kérhetsz új jelszót:</p>
+      <p style="padding: 20px 0">In case the button doesn't work, you can also change your password by clicking the link below:</p>
   
       <div>${link}</div>
       </div>
@@ -187,13 +199,13 @@ export const userService = {
       return {
         status: 200,
         message:
-          'A jelszó cseréjéhez kérlek nyisd meg az e-mailt amit küldtünk',
+          'Please open the e-mail we have just sent you to change your password',
       };
     } catch (err) {
       logger.error(err);
       return {
         status: 500,
-        message: 'Adatbázis probléma',
+        message: 'Activation failed',
       };
     }
   },
@@ -206,8 +218,7 @@ export const userService = {
         logger.error(err);
         return {
           status: 401,
-          message:
-            'Sajnos a jelszó megváltoztatására adott idő (15 perc) lejárt',
+          message: 'The time to change your password (15 mins) has expired',
         };
       }
 
@@ -221,14 +232,13 @@ export const userService = {
       });
       return {
         status: 200,
-        message:
-          'A jelszó cseréje sikeresen megtörtént. Most már bejelentkezhetsz',
+        message: 'Password has been updated. You can log in now',
       };
     } catch (err) {
       logger.error(err);
       return {
         status: 500,
-        message: 'A jelszó cseréje nem sikerült',
+        message: 'Password could not be changed',
       };
     }
   },

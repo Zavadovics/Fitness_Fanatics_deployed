@@ -27,14 +27,14 @@ export const planService = {
       await plan.save();
       return {
         status: 200,
-        message: 'Sikeres edzésterv feltöltés',
+        message: 'Training plan has been uploaded',
         plan: plan,
       };
     } catch (err) {
       logger.error(err);
       return {
         status: 500,
-        message: 'Edzésterv feltöltés sikertelen',
+        message: 'Training plan could not be uploaded',
       };
     }
   },

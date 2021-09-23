@@ -13,23 +13,21 @@ export const loginService = {
         message: error.details[0].message,
       };
     }
-
     const user = await User.findOne({ email: loginData.email });
+
     if (!user) {
       return {
         status: 404,
-        message: 'Az általad megadott email cím még nincs regisztrálva',
+        message: 'This e-mail address has not yet been registered',
       };
     }
 
-    const validPass =
-      (await bcrypt.compare(loginData.password, user.password)) ||
-      loginData.password === user.password;
+    const validPass = await bcrypt.compare(loginData.password, user.password);
 
     if (!validPass) {
       return {
         status: 403,
-        message: 'Az általad megadott email cím vagy jelszó helytelen',
+        message: 'E-mail address or password is incorrect',
       };
     }
 
@@ -56,7 +54,7 @@ export const loginService = {
       logger.error(err);
       return {
         status: 500,
-        message: 'Adatbázis probléma',
+        message: 'Database error',
       };
     }
   },

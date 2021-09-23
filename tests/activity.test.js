@@ -20,9 +20,9 @@ const activity = {
   activityDate: '1966-06-06',
   activityTime: '06:35',
   duration: 144,
-  activityType: 'futás',
+  activityType: 'running',
   distance: 18000,
-  comment: 'rohadt hideg volt',
+  comment: 'it was too hot',
 };
 
 const authToken = jwt.sign(
@@ -36,9 +36,9 @@ const updatedActivity = {
   activityDate: '1966-06-06',
   activityTime: '06:35',
   duration: 144,
-  activityType: 'futás',
+  activityType: 'running',
   distance: 18000,
-  comment: 'annyira nem volt hideg csak szeles',
+  comment: 'there was a crazy wind',
 };
 
 describe('testing activities', () => {
@@ -49,9 +49,7 @@ describe('testing activities', () => {
       .set('Authorization', `Bearer ${authToken}`)
       .then(response => {
         expect(response.statusCode).toBe(201);
-        expect(response.body.message).toBe(
-          'Sikeres mentés. Az új tevékenységet hozzádtuk az adatbázishoz'
-        );
+        expect(response.body.message).toBe('New activity has been added');
         activity['id'] = response.body.newActivity._id;
         activity['user_id'] = response.body.newActivity.user_id;
       });
@@ -64,9 +62,7 @@ describe('testing activities', () => {
       .set('Authorization', `Bearer ${authToken}`)
       .then(response => {
         expect(response.statusCode).toBe(200);
-        expect(response.body.message).toBe(
-          'Sikeres módosítás. A tevékenység frissítésre került az adatbázisban'
-        );
+        expect(response.body.message).toBe('Activity has been modified');
       });
   });
 
@@ -86,7 +82,7 @@ describe('testing activities', () => {
       .set('Authorization', `Bearer ${authToken}`)
       .then(response => {
         expect(response.statusCode).toBe(200);
-        expect(response.body.message).toBe('Tevékenység sikeresen törölve');
+        expect(response.body.message).toBe('Activity has been deleted');
       });
   });
 });

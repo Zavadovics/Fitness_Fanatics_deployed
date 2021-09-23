@@ -42,7 +42,7 @@ const EditActivity = ({ loggedInUser }) => {
       className='edit-activity-cont'
       style={{ backgroundImage: `url(${bg})` }}
     >
-      <h2 className='inner-h2'>Tevékenység módosítása</h2>
+      <h2 className='inner-h2'>Edit activity</h2>
       {error && <div className='error'>{error}</div>}
       {activity && (
         <ActivityForm

@@ -29,8 +29,8 @@ const ForgotPassword = ({ setLoggedInUser }) => {
   };
 
   const formErrorTypes = Object.freeze({
-    required: `A mező kitöltése kötelező`,
-    validEmail: `Nem megfelelő email formátum`,
+    required: `Please fill me in`,
+    validEmail: `E-mail is not the right format`,
   });
 
   const [formErrors, setFormErrors] = useState({
@@ -38,7 +38,7 @@ const ForgotPassword = ({ setLoggedInUser }) => {
   });
 
   const messageTypes = Object.freeze({
-    failCaptcha: `Kérlek bizonyítsd be hogy nem vagy robot 🤖`,
+    failCaptcha: `Please prove me that you're not a robot 🤖`,
   });
 
   const validators = {
@@ -109,7 +109,7 @@ const ForgotPassword = ({ setLoggedInUser }) => {
     <>
       <Navbar />
       <div className='password-cont'>
-        <h1 className='outer-h1'>Elfelejtett jelszó</h1>
+        <h1 className='outer-h1'>Forgotten password</h1>
         <div className='alert-cont'>
           {alert && (
             <p className={`alert alert-${alert.alertType}`}>{alert.message}</p>
@@ -125,7 +125,7 @@ const ForgotPassword = ({ setLoggedInUser }) => {
               name='email'
               type='email'
               value={formData.email}
-              labelText='Email cím *'
+              labelText='E-mail address *'
               onChange={e => {
                 handleInputChange(e, formData, setFormData);
               }}
@@ -144,6 +144,7 @@ const ForgotPassword = ({ setLoggedInUser }) => {
               required
             />
             <ReCAPTCHA
+              hl='en'
               className='captcha'
               sitekey={REACT_APP_GOOGLE_RECAPTCHA_KEY}
               onChange={() => {
@@ -152,11 +153,11 @@ const ForgotPassword = ({ setLoggedInUser }) => {
             />
           </div>
           <button type='submit' className='password-btn'>
-            KÜLDÉS
+            SEND
           </button>
           <p>
             <Link to='/' className='text-link'>
-              Vissza a főoldalra
+              Back to HOME page
             </Link>
           </p>
         </form>

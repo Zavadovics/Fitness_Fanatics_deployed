@@ -1,13 +1,11 @@
 {
-    "name": "Fitness_Fanatics_deployed",
+    "name": "backend",
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
     "scripts": {
         "start": "node index.js",
-        "heroku-postbuild": "cd client && yarn install --only=dev && yarn install && yarn run build",
-        "test": "jest",
-        "test:watch": "jest --watch"
+        "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
     },
     "keywords": [],
     "type": "module",
@@ -35,6 +33,6 @@
         "supertest": "^6.1.4"
     },
     "engines": {
-        "node": "14.15.0"
+        "node": "8.9.2"
     }
 }

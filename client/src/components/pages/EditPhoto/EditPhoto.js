@@ -12,8 +12,8 @@ const EditPhoto = ({ loggedInUser, userPhoto, setUserPhoto }) => {
   console.log('photoToBeDeleted', photoToBeDeleted);
   const deleteModalRef = useRef();
   const messageTypes = Object.freeze({
-    missingFile: `Nincs hozzáadva feltöltendő fájl`,
-    addedFile: `Feltöltendő fájl hozzáadva`,
+    missingFile: `No file added`,
+    addedFile: `File ready to be uploaded`,
   });
 
   const handleChange = e => {
@@ -103,7 +103,7 @@ const EditPhoto = ({ loggedInUser, userPhoto, setUserPhoto }) => {
         className='edit-photo-cont'
         style={{ backgroundImage: `url(${bg})` }}
       >
-        <h2 className='inner-h2'>Profilkép</h2>
+        <h2 className='inner-h2'>Profile photo</h2>
         <div className='alert-cont'>
           {alert && (
             <p className={`alert alert-${alert.alertType}`}>{alert.message}</p>
@@ -118,13 +118,13 @@ const EditPhoto = ({ loggedInUser, userPhoto, setUserPhoto }) => {
             )}
           </div>
           <p>
-            <span>Helló </span>
+            <span>Hi </span>
             <span>{loggedInUser.firstName}</span>
             <span> !</span>
           </p>
           <p>
-            Új profilképet töltenél fel vagy lecserélnéd a jelenlegit? Itt
-            mindkettőt megteheted.
+            Would you like to upload a new photo or update the old one? You can
+            do both here.
           </p>
 
           <div className='mb-3'>
@@ -137,17 +137,17 @@ const EditPhoto = ({ loggedInUser, userPhoto, setUserPhoto }) => {
               onChange={handleChange}
             />
             <label className='input-label' htmlFor='file'>
-              Válassz egy fájlt (Kattints ide)
+              Pick a file! (Click here)
             </label>
           </div>
           <div className='text-center'>
             <button className='photo-btn' onClick={handleSubmit}>
-              Küldés
+              SEND
             </button>
           </div>
           {userPhoto !== '' && (
             <>
-              <p>Törölnéd a fotódat? Csak kattints az X-re.</p>
+              <p>Do you want to delete your photo? Just click the X below.</p>
               <button
                 className='del-btn'
                 type='button'

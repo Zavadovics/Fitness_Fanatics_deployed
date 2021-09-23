@@ -19,15 +19,14 @@ export const activityService = {
       await newActivity.save();
       return {
         status: 201,
-        message:
-          'Sikeres mentés. Az új tevékenységet hozzádtuk az adatbázishoz',
+        message: 'New activity has been added',
         newActivity: newActivity,
       };
     } catch (err) {
       logger.error(err);
       return {
         status: 500,
-        message: 'Sikertelen mentés. Adatbázis probléma',
+        message: 'New activity could not be added',
       };
     }
   },
@@ -39,15 +38,14 @@ export const activityService = {
       });
       return {
         status: 200,
-        message:
-          'Sikeres módosítás. A tevékenység frissítésre került az adatbázisban',
+        message: 'Activity has been modified',
         updatedActivity: updatedActivity,
       };
     } catch (err) {
       logger.error(err);
       return {
         status: 500,
-        message: 'Sikertelen módosítás. Adatbázis probléma',
+        message: 'Activity could not be modified',
       };
     }
   },
@@ -57,13 +55,13 @@ export const activityService = {
       await Activity.findByIdAndDelete(id);
       return {
         status: 200,
-        message: 'Tevékenység sikeresen törölve',
+        message: 'Activity has been deleted',
       };
     } catch (err) {
       logger.error(err);
       return {
         status: 500,
-        message: 'Tevékenység törlése sikertelen',
+        message: 'Activity could not be deleted',
       };
     }
   },

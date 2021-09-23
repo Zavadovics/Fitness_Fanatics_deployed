@@ -15,7 +15,7 @@ import './activityForm.scss';
 
 const ActivityForm = ({ type, activity, loggedInUser }) => {
   const { REACT_APP_SERVER_URL } = process.env;
-  const activityTypeList = ['futás', 'kerékpározás', 'úszás'];
+  const activityTypeList = ['running', 'cycling', 'swimming'];
   const [formData, setFormData] = useState(
     type === 'edit'
       ? activity
@@ -42,9 +42,9 @@ const ActivityForm = ({ type, activity, loggedInUser }) => {
   };
 
   const formErrorTypes = Object.freeze({
-    required: `A mező kitöltése kötelező`,
-    positive: `A megadott érték nagyobb kell hogy legyen mint 0.`,
-    futureDate: `Kérlek egy múltbeli dátumot addj meg!`,
+    required: `Please fill me in`,
+    positive: `Value must be larger than 0`,
+    futureDate: `I need a future date here`,
   });
 
   const [formErrors, setFormErrors] = useState({
@@ -206,7 +206,7 @@ const ActivityForm = ({ type, activity, loggedInUser }) => {
               name='activityDate'
               id='activityDate'
               type='date'
-              labelText='Dátum *'
+              labelText='Date *'
               onChange={e => {
                 handleInputChange(e, formData, setFormData);
               }}
@@ -228,7 +228,7 @@ const ActivityForm = ({ type, activity, loggedInUser }) => {
               name='activityTime'
               id='activityTime'
               type='time'
-              labelText='Idő *'
+              labelText='Time *'
               onChange={e => {
                 handleInputChange(e, formData, setFormData);
               }}
@@ -250,7 +250,7 @@ const ActivityForm = ({ type, activity, loggedInUser }) => {
               name='duration'
               id='duration'
               type='number'
-              labelText='Időtartam (perc) *'
+              labelText='Duration (minutes) *'
               onChange={e => {
                 handleInputChange(e, formData, setFormData);
               }}
@@ -269,7 +269,7 @@ const ActivityForm = ({ type, activity, loggedInUser }) => {
               error={formErrors.duration}
             />
             <ItemSelect
-              labelText='Tevékenység típusa *'
+              labelText='Type *'
               name='activityType'
               id='activityType'
               formValue={formData.activityType}
@@ -294,7 +294,7 @@ const ActivityForm = ({ type, activity, loggedInUser }) => {
               name='distance'
               id='distance'
               type='number'
-              labelText='Távolság (méter) *'
+              labelText='Distance (meter) *'
               onChange={e => {
                 handleInputChange(e, formData, setFormData);
               }}
@@ -316,7 +316,7 @@ const ActivityForm = ({ type, activity, loggedInUser }) => {
               name='comment'
               id='comment'
               type='comment'
-              labelText='Megjegyzés'
+              labelText='Comment'
               onChange={e => {
                 handleInputChange(e, formData, setFormData);
               }}
@@ -336,7 +336,7 @@ const ActivityForm = ({ type, activity, loggedInUser }) => {
             />
           </div>
           <button type='submit' className='activity-btn'>
-            MENTÉS
+            SAVE
           </button>
         </form>
       </div>

@@ -9,7 +9,7 @@ const Activities = ({ profile, loggedInUser }) => {
   const [alert, setAlert] = useState(null);
 
   const messageTypes = Object.freeze({
-    dbProblem: `Adatbázis probléma.`,
+    dbProblem: `Database problem`,
   });
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const Activities = ({ profile, loggedInUser }) => {
         if (res.status !== 200) {
           setAlert({ alertType: 'danger', message: messageTypes.dbProblem });
           throw Error(
-            `could not fetch the data from database, error ${res.status}`
+            `could not fetch data from database, error ${res.status}`
           );
         }
         return res.json();
@@ -43,16 +43,14 @@ const Activities = ({ profile, loggedInUser }) => {
         className='activities-cont'
         style={{ backgroundImage: `url(${back})` }}
       >
-        <h2 className='inner-h2'>Tevékenységek</h2>
+        <h2 className='inner-h2'>Activities</h2>
         <div className='alert-cont-activities'>
           {alert && (
             <p className={`alert alert-${alert.alertType}`}>{alert.message}</p>
           )}
         </div>
         {activities.length === 0 ? (
-          <p className='no-activities'>
-            Nincs egy megjeleníthető tevékenység sem.
-          </p>
+          <p className='no-activities'>You have not added any activities</p>
         ) : (
           <>
             {activities.map(activity => (

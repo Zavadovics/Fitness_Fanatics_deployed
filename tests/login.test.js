@@ -39,7 +39,7 @@ describe('POST /api/login', () => {
       });
       expect(response.statusCode).toBe(403);
       expect(response.body.message).toBe(
-        'Az általad megadott email cím vagy jelszó helytelen'
+        'E-mail address or password is incorrect'
       );
     });
   });
@@ -55,7 +55,7 @@ describe('POST /api/login', () => {
       });
       expect(response.statusCode).toBe(404);
       expect(response.body.message).toBe(
-        'Az általad megadott email cím még nincs regisztrálva'
+        'This e-mail address has not yet been registered'
       );
     });
   });

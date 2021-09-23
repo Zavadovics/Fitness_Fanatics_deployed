@@ -40,7 +40,7 @@ export const photoService = {
         );
         return {
           status: 200,
-          message: 'Fotó sikeresen módosítva',
+          message: 'Photo has been updated',
           image: result.secure_url,
         };
       } else {
@@ -64,7 +64,7 @@ export const photoService = {
         );
         return {
           status: 200,
-          message: 'Fotó sikeresen feltöltve',
+          message: 'Photo has been uploaded',
           image: result.secure_url,
         };
       }
@@ -72,7 +72,7 @@ export const photoService = {
       logger.error(err);
       return {
         status: 500,
-        message: 'Fotó feltöltés sikertelen',
+        message: 'Photo could not be uploaded',
       };
     }
   },
@@ -84,13 +84,13 @@ export const photoService = {
       await Photo.deleteOne({ user_id: id });
       return {
         status: 200,
-        message: 'Fotó sikeresen törölve',
+        message: 'Photo has been deleted',
       };
     } catch (err) {
       logger.error(err);
       return {
         status: 500,
-        message: 'Fotó törlése sikertelen',
+        message: 'Photo could not be deleted',
       };
     }
   },

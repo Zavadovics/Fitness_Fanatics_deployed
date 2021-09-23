@@ -5,7 +5,7 @@ export const meterToKilometers = data => {
 export const minsToHoursAndMins = num => {
   const hours = Math.floor(num / 60);
   const minutes = num % 60;
-  return hours + ' óra ' + minutes + ' perc';
+  return hours + ' hours ' + minutes + ' mins';
 };
 
 export const calorieCounter = (durationInMins, weight) => {

@@ -33,11 +33,11 @@ const authToken = jwt.sign({ tokenId: userId }, process.env.TOKEN_SECRET);
 
 describe('POST /api/user', () => {
   describe('given a first name, last name, email, and password', () => {
-    test('should respond with status code 201', async () => {
+    test('should respond with status code 200', async () => {
       const response = await request(app).post('/api/user').send(userData);
-      expect(response.statusCode).toBe(201);
+      expect(response.statusCode).toBe(200);
       expect(response.body.message).toBe(
-        'Sikeres regisztráció. Máris átirányítunk a bejelentkezés oldalra'
+        `Please open the e-mail we have just sent you to activate your account`
       );
     });
   });
@@ -48,7 +48,7 @@ describe('POST /api/user', () => {
       const response = await request(app).post('/api/user').send(userData);
       expect(response.statusCode).toBe(409);
       expect(response.body.message).toBe(
-        'Az általad megadott email cím már regisztrálva van'
+        'This e-mail address has already been registered'
       );
     });
   });
@@ -177,10 +177,9 @@ describe('PUT /api/user/:id', () => {
         .then(response => {
           expect(response.statusCode).toBe(200);
           expect(response.body.message).toBe(
-            'Sikeres mentés. Az adatokat hozzádtuk az adatbázishoz'
+            'Your information has been added to our database'
           );
         });
     });
   });
 });
-

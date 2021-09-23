@@ -35,9 +35,9 @@ const ResetPassword = () => {
   };
 
   const formErrorTypes = Object.freeze({
-    required: `A mező kitöltése kötelező`,
-    passwordLength: `A jelszó legalább 8 karakter hosszú kell legyen`,
-    passwordMatch: `A megadott jelszavak nem egyeznek.`,
+    required: `Please fill me in`,
+    passwordLength: `The passwords needs to be at least 8 characters long`,
+    passwordMatch: `The passwords don't match`,
   });
 
   const [formErrors, setFormErrors] = useState({
@@ -46,7 +46,7 @@ const ResetPassword = () => {
   });
 
   const messageTypes = Object.freeze({
-    failCaptcha: `Kérlek bizonyítsd be hogy nem vagy robot 🤖`,
+    failCaptcha: `Please prove me that you're not a robot 🤖`,
   });
 
   const isConfirmPasswordMatch = value => value === formData.newPassword;
@@ -128,7 +128,7 @@ const ResetPassword = () => {
     <>
       <Navbar />
       <div className='reset-password-cont'>
-        <h1 className='outer-h1'>Jelszó cseréje</h1>
+        <h1 className='outer-h1'>New password</h1>
         <div className='alert-cont'>
           {alert && (
             <p className={`alert alert-${alert.alertType}`}>{alert.message}</p>
@@ -145,7 +145,7 @@ const ResetPassword = () => {
               passwordShown={passwordShown}
               setPasswordShown={setPasswordShown}
               type={passwordShown ? 'text' : 'password'}
-              labelText='Új jelszó - (legalább 8 karakter) *'
+              labelText='New password - (min 8 characters) *'
               value={formData.newPassword}
               onChange={e => {
                 handleInputChange(e, formData, setFormData);
@@ -169,7 +169,7 @@ const ResetPassword = () => {
               passwordShown={passwordShown}
               setPasswordShown={setPasswordShown}
               type={passwordShown ? 'text' : 'password'}
-              labelText='Jelszó még egyszer *'
+              labelText='Repeat password *'
               value={formData.confirmPassword}
               onChange={e => {
                 handleInputChange(e, formData, setFormData);
@@ -189,6 +189,7 @@ const ResetPassword = () => {
               required
             />
             <ReCAPTCHA
+              hl='en'
               className='captcha'
               sitekey={REACT_APP_GOOGLE_RECAPTCHA_KEY}
               onChange={() => {
@@ -197,11 +198,11 @@ const ResetPassword = () => {
             />
           </div>
           <button type='submit' className='password-btn'>
-            KÜLDÉS
+            SEND
           </button>
           <p>
             <Link to='/' className='text-link'>
-              Vissza a főoldalra
+              Back to HOME page
             </Link>
           </p>
         </form>

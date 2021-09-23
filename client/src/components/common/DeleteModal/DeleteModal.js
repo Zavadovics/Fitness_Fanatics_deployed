@@ -15,7 +15,7 @@ const DeleteModal = ({ handleDeleteConfirm, deleteModalRef, type }) => {
                     src={logo}
                     alt='logo'
                   />{' '}
-                  FITNESS FANATICS - Profilkép
+                  FITNESS FANATICS - Profile photo
                 </h5>
               ) : (
                 <h5 className='modal-title'>
@@ -25,7 +25,7 @@ const DeleteModal = ({ handleDeleteConfirm, deleteModalRef, type }) => {
                     src={logo}
                     alt='logo'
                   />{' '}
-                  FITNESS FANATICS - Tevékenységek
+                  FITNESS FANATICS - Activities
                 </h5>
               )}
               <button
@@ -37,9 +37,9 @@ const DeleteModal = ({ handleDeleteConfirm, deleteModalRef, type }) => {
             </div>
             <div className='modal-body'>
               {type === 'EditPhoto' ? (
-                <p>Biztosan törölni szeretnéd ezt a fotót?</p>
+                <p>Are you sure you want to delete this photo?</p>
               ) : (
-                <p>Biztosan törölni szeretnéd ezt a tevékenységet?</p>
+                <p>Are you sure you want to delete this activity?</p>
               )}
             </div>
             <div className='modal-footer'>
@@ -48,7 +48,7 @@ const DeleteModal = ({ handleDeleteConfirm, deleteModalRef, type }) => {
                 className='btn btn-secondary'
                 data-bs-dismiss='modal'
               >
-                Mégsem
+                CHANGED MY MIND
               </button>
               <button
                 type='button'
@@ -56,7 +56,7 @@ const DeleteModal = ({ handleDeleteConfirm, deleteModalRef, type }) => {
                 data-bs-dismiss='modal'
                 onClick={handleDeleteConfirm}
               >
-                Törlés
+                YES, DELETE
               </button>
             </div>
           </div>

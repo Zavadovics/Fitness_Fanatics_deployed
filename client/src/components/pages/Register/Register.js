@@ -40,9 +40,9 @@ const Register = () => {
   };
 
   const formErrorTypes = Object.freeze({
-    required: `A mező kitöltése kötelező`,
-    passwordLength: `A jelszó legalább 8 karakter hosszú kell legyen`,
-    validEmail: `Nem megfelelő email formátum`,
+    required: `Please fill me in`,
+    passwordLength: `The passwords needs to be at least 8 characters long`,
+    validEmail: `E-mail is not the right format`,
   });
 
   const [formErrors, setFormErrors] = useState({
@@ -53,7 +53,7 @@ const Register = () => {
   });
 
   const messageTypes = Object.freeze({
-    failCaptcha: `Kérlek bizonyítsd be hogy nem vagy robot 🤖`,
+    failCaptcha: `Please prove me that you're not a robot 🤖`,
   });
 
   const validators = {
@@ -136,7 +136,7 @@ const Register = () => {
     <>
       <Navbar />
       <div className='register-cont'>
-        <h1 className='outer-h1'>Regisztráció</h1>
+        <h1 className='outer-h1'>Registration</h1>
         <div className='alert-cont'>
           {alert && (
             <p className={`alert alert-${alert.alertType}`}>{alert.message}</p>
@@ -149,31 +149,9 @@ const Register = () => {
         >
           <div className='input'>
             <InputField
-              name='lastName'
-              type='text'
-              labelText='Vezetéknév *'
-              value={formData.lastName}
-              onChange={e => {
-                handleInputChange(e, formData, setFormData);
-              }}
-              onBlur={e => {
-                handleInputBlur(
-                  e,
-                  formData,
-                  setFormErrors,
-                  validators,
-                  references,
-                  formErrorTypes
-                );
-              }}
-              reference={references.lastName}
-              error={formErrors.lastName}
-              required
-            />
-            <InputField
               name='firstName'
               type='text'
-              labelText='Keresztnév *'
+              labelText='First name *'
               value={formData.firstName}
               onChange={e => {
                 handleInputChange(e, formData, setFormData);
@@ -193,9 +171,31 @@ const Register = () => {
               required
             />
             <InputField
+              name='lastName'
+              type='text'
+              labelText='Last name *'
+              value={formData.lastName}
+              onChange={e => {
+                handleInputChange(e, formData, setFormData);
+              }}
+              onBlur={e => {
+                handleInputBlur(
+                  e,
+                  formData,
+                  setFormErrors,
+                  validators,
+                  references,
+                  formErrorTypes
+                );
+              }}
+              reference={references.lastName}
+              error={formErrors.lastName}
+              required
+            />
+            <InputField
               name='email'
               type='email'
-              labelText='Email cím *'
+              labelText='E-mail address *'
               value={formData.email}
               onChange={e => {
                 handleInputChange(e, formData, setFormData);
@@ -219,7 +219,7 @@ const Register = () => {
               passwordShown={passwordShown}
               setPasswordShown={setPasswordShown}
               type={passwordShown ? 'text' : 'password'}
-              labelText='Jelszó - (legalább 8 karakter) *'
+              labelText='Password - (min 8 characters) *'
               value={formData.password}
               onChange={e => {
                 handleInputChange(e, formData, setFormData);
@@ -239,6 +239,7 @@ const Register = () => {
               required
             />
             <ReCAPTCHA
+              hl='en'
               className='captcha'
               sitekey={REACT_APP_GOOGLE_RECAPTCHA_KEY}
               onChange={() => {
@@ -248,11 +249,11 @@ const Register = () => {
           </div>
           <p>
             <Link to='/login' className='text-link'>
-              Már regisztráltál? Itt bejelentkezhetsz.
+              Already registered? Login here
             </Link>
           </p>
           <button type='submit' className='register-btn'>
-            REGISZTRÁCIÓ
+            REGISTRATION
           </button>
         </form>
       </div>

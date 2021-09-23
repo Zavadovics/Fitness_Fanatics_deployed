@@ -33,7 +33,7 @@ const Sidebar = ({ loggedInUser }) => {
             >
               <FaRunning className='sidebar-icon' />
               <span className={sidebar ? 'span show' : 'span hide'}>
-                Tevékenységek
+                Activities
               </span>
             </NavLink>
           </li>
@@ -46,7 +46,7 @@ const Sidebar = ({ loggedInUser }) => {
             >
               <FaPlusSquare className='sidebar-icon' />
               <span className={sidebar ? 'span show' : 'span hide'}>
-                Új tevékenység
+                New activity
               </span>
             </NavLink>
           </li>
@@ -59,7 +59,7 @@ const Sidebar = ({ loggedInUser }) => {
             >
               <FaUser className='sidebar-icon' />
               <span className={sidebar ? 'span show' : 'span hide'}>
-                Saját profil{' '}
+                My profile
               </span>
             </NavLink>
           </li>
@@ -72,7 +72,7 @@ const Sidebar = ({ loggedInUser }) => {
             >
               <FaUserEdit className='sidebar-icon edit' />
               <span className={sidebar ? 'span show edit' : 'span hide'}>
-                Profil szerkesztése{' '}
+                Edit profile
               </span>
             </NavLink>
           </li>
@@ -85,7 +85,7 @@ const Sidebar = ({ loggedInUser }) => {
             >
               <FaCameraRetro className='sidebar-icon' />
               <span className={sidebar ? 'span show' : 'span hide'}>
-                Profil fotó{' '}
+                Profile photo
               </span>
             </NavLink>
           </li>
@@ -98,7 +98,7 @@ const Sidebar = ({ loggedInUser }) => {
             >
               <FaDumbbell className='sidebar-icon' />
               <span className={sidebar ? 'span show' : 'span hide'}>
-                Edzés tervek{' '}
+                Training plans
               </span>
             </NavLink>
           </li>
